@@ -8,5 +8,7 @@ Integrate Drift.com into your WordPress multisite network.
 
 3.) That's it. Enjoy!
 
+<p align="center">
+  <img src="https://q65ccltn8wq58fa3nmmjq188-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/integrations_web.png">
+</p>
 
-![Settings Window](https://q65ccltn8wq58fa3nmmjq188-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/integrations_web.png)
