@@ -9,4 +9,4 @@ Integrate Drift.com into your WordPress multisite network.
 3.) That's it. Enjoy!
 
 
-![Settings Window](https://www.drift.com/wp-content/themes/drift/assets/images/drift-live-chat.png)
+![Settings Window](https://q65ccltn8wq58fa3nmmjq188-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/integrations_web.png)
