@@ -43,7 +43,7 @@ function admin_dashboard_or_nah()
             //Get current site info.
             $blog_id = get_current_blog_id();
             //If we're on the front end of the main site or another site, show drift to all users.
-            if($blog_id == 1 || $blog_id == 112)
+            if($blog_id == 1)
             {
                 add_action('wp_enqueue_scripts', 'enqueue_drift_script');
             }
