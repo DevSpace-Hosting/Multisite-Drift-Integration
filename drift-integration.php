@@ -54,7 +54,7 @@ function admin_dashboard_or_nah()
 function enqueue_drift_script() 
 {
     //Enqueue the script.
-    wp_enqueue_script('drift-script', plugins_url('drift-script.js', __FILE__), array('jquery'),'0.1', false);
+    wp_enqueue_script('drift-script', plugins_url('drift-script.js', __FILE__), array('jquery'),'0.1', true);
 }
 //End of plugin.
 ?>
