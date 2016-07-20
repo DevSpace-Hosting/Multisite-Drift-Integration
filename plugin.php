@@ -65,19 +65,5 @@ function enqueue_user_report_script()
 {
     wp_enqueue_script('user-report-script', plugins_url('user-report-script.js', __FILE__), array('jquery'),'0.1', true);
 }
-
-// add a link to the WP Toolbar
-function custom_toolbar_link($wp_admin_bar) {
-    $args = array(
-        'id' => 'user-report-admin-bar-link',
-        'title' => 'Feedback & Bugs', 
-        'href' => 'https://feedback.userreport.com/537ed924-a73f-4ef6-95ad-91d2d0cffc8a/', 
-        'meta' => array(
-            'class' => 'user-report-admin-bar-link', 
-            'title' => 'Have some feedback or found a bug?'
-            )
-    );
-    $wp_admin_bar->add_node($args);
-}
 //End of plugin.
 ?>
