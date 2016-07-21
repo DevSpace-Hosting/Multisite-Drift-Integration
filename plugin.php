@@ -26,14 +26,12 @@ function admin_dashboard_or_nah()
             {
                 add_action('admin_enqueue_scripts', 'enqueue_drift_script');
                 add_action('admin_enqueue_scripts', 'enqueue_user_report_script');
-                add_action('admin_bar_menu', 'custom_toolbar_link', 999);
             }
             //If we're in the main site's admin panel, display to all users.
             else if($blog_id == 1)
             {
                 add_action('admin_enqueue_scripts', 'enqueue_drift_script');
                 add_action('admin_enqueue_scripts', 'enqueue_user_report_script');
-                add_action('admin_bar_menu', 'custom_toolbar_link', 999);
             }
         } 
     }
