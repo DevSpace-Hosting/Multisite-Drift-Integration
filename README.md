@@ -1,4 +1,4 @@
-# Multisite Drift Integration
+# Multisite Drift & UserReport Integration
 Integrate Drift.com into your WordPress multisite network.
 
 ## Installation
