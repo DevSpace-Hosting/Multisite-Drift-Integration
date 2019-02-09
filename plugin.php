@@ -1,54 +1,49 @@
 <?php
 /*
-Plugin Name: UserReport & Drift for Multisite
-Plugin URI: https://marcwoodyard.com
-Description: Enables network admins to enable UserReport and Drift on their multisite network.
-Version: 5.5.2017
-Author: Marc Woodyard
-Author URI: https://marcwoodyard.com
+Plugin Name: WordPress Drift Integration
+Plugin URI: https://github.com/DevSpace-Hosting/WordPress-Drift-Integration
+Description: Displays the Drift chat button in a WordPress website or multisite network.
+Version: 2-9-2019
+Author: DevSpace Hosting
+Author URI: https://github.com/DevSpace-Hosting
 */
 
-add_action('muplugins_loaded', 'admin_dashboard_or_nah');
+// Load Drift in /wp-admin (Recommended for multisite networks).
+add_action('admin_menu', 'admin_load_drift');
 
-	function admin_dashboard_or_nah() {
-	    if(is_admin()) {
-	        add_action('admin_menu', 'admin_load_drift');
+// Load Drift on the main website's front end.
+add_action('plugins_loaded', 'frontend_load_drift');
 
-	        function admin_load_drift() {
-	            $blog_id = get_current_blog_id();
-	            
-	            //If we're in a subsite's admin panel and the user is a subsite admimn, display Drift.
-	            if($blog_id >= 2 && current_user_can('administrator')) {
-	                add_action('admin_enqueue_scripts', 'enqueue_drift_script');
-	                add_action('admin_enqueue_scripts', 'enqueue_user_report_script');
-	            }
+/*
+// Load Drift in /wp-admin & main website's front end.
+function admin_dashboard_or_nah() {
+    if(is_admin() == true)
+        add_action('admin_menu', 'admin_load_drift');
 
-	            //If we're in the main site's admin panel, display to all users.
-	            else if($blog_id == 1) {
-	                add_action('admin_enqueue_scripts', 'enqueue_drift_script');
-	                add_action('admin_enqueue_scripts', 'enqueue_user_report_script');
-	            }
-	        } 
-	    } else if(!is_admin()) {
-	        add_action('plugins_loaded', 'frontend_load_drift');
-	        
-	        function frontend_load_drift() {
-	            $blog_id = get_current_blog_id();
-	            //If we're on the front end of the main site or another site, show drift to all users.
-	            if($blog_id == 1) {
-	                add_action('wp_enqueue_scripts', 'enqueue_drift_script');
-	            }
-	        }
-	    }
-	}
+    // Load Drift on the main website's frontend.
+    else if(is_admin() == false)
+        add_action('plugins_loaded', 'frontend_load_drift');
+}
+*/
 
-	//Register the script with WordPress.
-	function enqueue_drift_script() {
-	    wp_enqueue_script('drift-script', plugins_url('drift-script.js', __FILE__), array('jquery'),'0.1', true);
-	}
+function admin_load_drift() {	            
+    //If we're in a subsite's admin panel and the user is a subsite admin, display Drift.
+    if(get_current_blog_id() >= 2 && current_user_can('administrator'))
+        add_action('admin_enqueue_scripts', 'enqueue_drift_script');
 
-	function enqueue_user_report_script() {
-	    wp_enqueue_script('user-report-script', plugins_url('user-report-script.js', __FILE__), array('jquery'),'0.1', true);
-	}
+    //If we're in the main site's admin panel, display to all users.
+    else if(get_current_blog_id() == 1)
+        add_action('admin_enqueue_scripts', 'enqueue_drift_script');
+}
+
+function frontend_load_drift() {
+    //If we're on the front end of the main site or another site, show drift to all users.
+    if(get_current_blog_id() == 1)
+        add_action('wp_enqueue_scripts', 'enqueue_drift_script');
+}
+
+function enqueue_drift_script() {
+    wp_enqueue_script('drift-script', plugins_url('js/drift.js', __FILE__), array('jquery'),'0.1', true);
+}
 
 ?>

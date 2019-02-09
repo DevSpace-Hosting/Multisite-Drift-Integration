@@ -1,5 +1,5 @@
-# WordPress Multisite Drift Integration
-Integrate Drift into your WordPress multisite network.
+# WordPress Drift Integration
+Integrate Drift into your WordPress website or multisite network.
 
 ## Installation
 1.) Upload the plugin into ``wp-content/plugins``.
